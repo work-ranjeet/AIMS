@@ -7,8 +7,8 @@
     s.no      date    author     description     
  ===========================================================*/
 
-app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash','appSettings',
-function ($rootScope, $scope, $state, $location, Flash,appSettings) {
+app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash', 'appSettings',
+function ($rootScope, $scope, $state, $location, Flash, appSettings) {
 
     $rootScope.theme = appSettings.theme;
     $rootScope.layout = appSettings.layout;
@@ -22,49 +22,49 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings) {
             theme: "black",
             color: "skin-black",
             title: "Dark - Black Skin",
-            icon:""
+            icon: ""
         },
         {
             theme: "black",
             color: "skin-black-light",
             title: "Light - Black Skin",
-            icon:"-o"
+            icon: "-o"
         },
         {
             theme: "blue",
             color: "skin-blue",
             title: "Dark - Blue Skin",
-            icon:""
+            icon: ""
         },
         {
             theme: "blue",
             color: "skin-blue-light",
             title: "Light - Blue Skin",
-            icon:"-o"
+            icon: "-o"
         },
         {
             theme: "green",
             color: "skin-green",
             title: "Dark - Green Skin",
-            icon:""
+            icon: ""
         },
         {
             theme: "green",
             color: "skin-green-light",
             title: "Light - Green Skin",
-            icon:"-o"
+            icon: "-o"
         },
         {
             theme: "yellow",
             color: "skin-yellow",
             title: "Dark - Yellow Skin",
-            icon:""
+            icon: ""
         },
         {
             theme: "yellow",
             color: "skin-yellow-light",
             title: "Light - Yellow Skin",
-            icon:"-o"
+            icon: "-o"
         },
         {
             theme: "red",
@@ -112,40 +112,70 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings) {
     //Main menu items of the dashboard
     vm.menuItems = [
         {
-            title: "Dashboard",
+            title: "Unit",
             icon: "dashboard",
             state: "dashboard"
         },
         {
-            title: "Skills",
+            title: "Item",
             icon: "gears",
             state: "skills"
         },
         {
-            title: "Education",
+            title: "Expense",
             icon: "graduation-cap",
             state: "education"
         },
         {
-            title: "Experience",
+            title: "Supplier",
             icon: "suitcase",
             state: "experience"
         },
         {
-            title: "Recent Projects",
+            title: "Customer",
             icon: "file-code-o",
             state: "recent"
         },
         {
-            title: "Websites",
+            title: "Shop",
             icon: "globe",
             state: "websites"
         },
         {
-            title: "Portfolio",
+            title: "Open Item Stock",
             icon: "anchor",
             state: "portfolio"
         },
+          {
+              title: "Purchage",
+              icon: "user-secret",
+              state: "about"
+          },
+            {
+                title: "Stock Transfer",
+                icon: "user-secret",
+                state: "about"
+            },
+            {
+                title: "Stock Acceptance",
+                icon: "user-secret",
+                state: "about"
+            },
+             {
+                 title: "Sales",
+                 icon: "user-secret",
+                 state: "about"
+             },
+              {
+                  title: "Cash Transfer",
+                  icon: "user-secret",
+                  state: "about"
+              },
+               {
+                   title: "Cash Aceptance",
+                   icon: "user-secret",
+                   state: "about"
+               },
         {
             title: "About Me",
             icon: "user-secret",
@@ -172,18 +202,18 @@ function ($rootScope, $scope, $state, $location, Flash,appSettings) {
 
     //controll sidebar open & close in mobile and normal view
     vm.sideBar = function (value) {
-        if($(window).width()<=767){
-        if ($("body").hasClass('sidebar-open'))
-            $("body").removeClass('sidebar-open');
-        else
-            $("body").addClass('sidebar-open');
+        if ($(window).width() <= 767) {
+            if ($("body").hasClass('sidebar-open'))
+                $("body").removeClass('sidebar-open');
+            else
+                $("body").addClass('sidebar-open');
         }
         else {
-            if(value==1){
-            if ($("body").hasClass('sidebar-collapse'))
-                $("body").removeClass('sidebar-collapse');
-            else
-                $("body").addClass('sidebar-collapse');
+            if (value == 1) {
+                if ($("body").hasClass('sidebar-collapse'))
+                    $("body").removeClass('sidebar-collapse');
+                else
+                    $("body").addClass('sidebar-collapse');
             }
         }
     };
