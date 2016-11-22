@@ -1,23 +1,15 @@
-﻿/*==========================================================
-    Author      : Ranjithprabhu K
-    Date Created: 24 Dec 2015
-    Description : Controller to handle main application
-    
-    Change Log
-    s.no      date    author     description     
- ===========================================================*/
-
+﻿
 app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash', 'appSettings',
 function ($rootScope, $scope, $state, $location, Flash, appSettings) {
 
     $rootScope.theme = appSettings.theme;
     $rootScope.layout = appSettings.layout;
 
-    var vm = this;
+    var appCtrl = this;
 
 
     //avalilable themes
-    vm.themes = [
+    $scope.themes = [
         {
             theme: "black",
             color: "skin-black",
@@ -93,7 +85,7 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
     ];
 
     //available layouts
-    vm.layouts = [
+    $scope.layouts = [
         {
             name: "Boxed",
             layout: "layout-boxed"
@@ -110,98 +102,96 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
 
 
     //Main menu items of the dashboard
-    vm.menuItems = [
+    $scope.menuItems = [
         {
-            title: "Unit",
+            title: "Home",
             icon: "dashboard",
-            state: "dashboard"
+            state: "home"
         },
         {
-            title: "Item",
+            title: "Units",
+            icon: "dashboard",
+            state: "unit"
+        },
+        {
+            title: "Items",
             icon: "gears",
-            state: "skills"
+            state: "item"
+
         },
         {
-            title: "Expense",
+            title: "Expenses",
             icon: "graduation-cap",
-            state: "education"
+            state: "expense"
         },
         {
-            title: "Supplier",
-            icon: "suitcase",
-            state: "experience"
-        },
-        {
-            title: "Customer",
+            title: "Customers",
             icon: "file-code-o",
             state: "recent"
         },
         {
-            title: "Shop",
-            icon: "globe",
-            state: "websites"
+            title: "Suppliers",
+            icon: "suitcase",
+            state: "supplier"
         },
         {
-            title: "Open Item Stock",
-            icon: "anchor",
-            state: "portfolio"
-        },
-          {
-              title: "Purchage",
-              icon: "user-secret",
-              state: "about"
-          },
-            {
-                title: "Stock Transfer",
-                icon: "user-secret",
-                state: "about"
-            },
-            {
-                title: "Stock Acceptance",
-                icon: "user-secret",
-                state: "about"
-            },
-             {
-                 title: "Sales",
-                 icon: "user-secret",
-                 state: "about"
-             },
-              {
-                  title: "Cash Transfer",
-                  icon: "user-secret",
-                  state: "about"
-              },
-               {
-                   title: "Cash Aceptance",
-                   icon: "user-secret",
-                   state: "about"
-               },
-        {
-            title: "About Me",
+            title: "Stocks",
             icon: "user-secret",
-            state: "about"
+            state: "stocks",
+            hasSubMenu: true,
+            subMenu: [
+                { title: "Stock Transfer", state: "about" },
+                { title: "Stock Acceptance", state: "about" }
+            ]
         },
         {
-            title: "Contact",
-            icon: "phone",
-            state: "contact"
+            title: "Cash",
+            icon: "user-secret",
+            state: "cash",
+            hasSubMenu: true,
+            subMenu: [
+                      {
+                          title: "Cash Transfer",
+                          state: "about"
+                      },
+                      {
+                          title: "Cash Aceptance",
+                          state: "about"
+                      }]
+        },
+        {
+            title: "Shops",
+            icon: "globe",
+            state: "shops"
+        },
+
+        {
+            title: "Purchage",
+            icon: "user-secret",
+            state: "purchage"
+        },
+
+        {
+            title: "Sales",
+            icon: "user-secret",
+            state: "sales"
         }
     ];
 
     //set the theme selected
-    vm.setTheme = function (value) {
-        $rootScope.theme = value;
-    };
+    //$scope.setTheme = function (value) {
+    //    $rootScope.theme = value;
+    //};
 
 
-    //set the Layout in normal view
-    vm.setLayout = function (value) {
-        $rootScope.layout = value;
-    };
+    ////set the Layout in normal view
+    //$scope.setLayout = function (value) {
+    //    $rootScope.layout = value;
+    //};
 
 
     //controll sidebar open & close in mobile and normal view
-    vm.sideBar = function (value) {
+    $scope.sideBar = function (value) {
         if ($(window).width() <= 767) {
             if ($("body").hasClass('sidebar-open'))
                 $("body").removeClass('sidebar-open');
@@ -219,9 +209,9 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
     };
 
     //navigate to search page
-    vm.search = function () {
-        $state.go('app.search');
-    };
+    //$scope.search = function () {
+    //    $state.go('app.search');
+    //};
 
     console.log('getting in to the app controller');
 
