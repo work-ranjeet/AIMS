@@ -1,23 +1,15 @@
-﻿/*==========================================================
-    Author      : Ranjithprabhu K
-    Date Created: 24 Dec 2015
-    Description : Controller to handle main application
-    
-    Change Log
-    s.no      date    author     description     
- ===========================================================*/
-
+﻿
 app.controller("appCtrl", ['$rootScope', '$scope', '$state', '$location', 'Flash', 'appSettings',
 function ($rootScope, $scope, $state, $location, Flash, appSettings) {
 
     $rootScope.theme = appSettings.theme;
     $rootScope.layout = appSettings.layout;
 
-    var vm = this;
+    var appCtrl = this;
 
 
     //avalilable themes
-    vm.themes = [
+    $scope.themes = [
         {
             theme: "black",
             color: "skin-black",
@@ -93,7 +85,7 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
     ];
 
     //available layouts
-    vm.layouts = [
+    $scope.layouts = [
         {
             name: "Boxed",
             layout: "layout-boxed"
@@ -110,98 +102,139 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
 
 
     //Main menu items of the dashboard
-    vm.menuItems = [
+    $scope.menuItems = [
         {
-            title: "Unit",
+            title: "Home",
             icon: "dashboard",
-            state: "dashboard"
+            state: "home",
+            hasSubMenu: false
         },
         {
-            title: "Item",
+            title: "Units",
+            icon: "dashboard",
+            state: "unit",
+            hasSubMenu: false
+        },
+        {
+            title: "Items",
             icon: "gears",
-            state: "skills"
+            state: "item",
+            hasSubMenu: false
+
         },
+
         {
-            title: "Expense",
-            icon: "graduation-cap",
-            state: "education"
-        },
-        {
-            title: "Supplier",
+            title: "Suppliers",
             icon: "suitcase",
-            state: "experience"
+            state: "supplier",
+            hasSubMenu: false
         },
         {
-            title: "Customer",
+            title: "Customers",
             icon: "file-code-o",
-            state: "recent"
+            state: "recent",
+            hasSubMenu: false
         },
         {
-            title: "Shop",
+            title: "Shops",
             icon: "globe",
-            state: "websites"
+            state: "shops",
+            hasSubMenu: false
         },
         {
-            title: "Open Item Stock",
-            icon: "anchor",
-            state: "portfolio"
+            title: "",
+            icon: "",
+            state: "",
+            hasSubMenu: false
         },
-          {
-              title: "Purchage",
-              icon: "user-secret",
-              state: "about"
-          },
-            {
-                title: "Stock Transfer",
-                icon: "user-secret",
-                state: "about"
-            },
-            {
-                title: "Stock Acceptance",
-                icon: "user-secret",
-                state: "about"
-            },
-             {
-                 title: "Sales",
-                 icon: "user-secret",
-                 state: "about"
-             },
-              {
-                  title: "Cash Transfer",
-                  icon: "user-secret",
-                  state: "about"
-              },
-               {
-                   title: "Cash Aceptance",
-                   icon: "user-secret",
-                   state: "about"
-               },
         {
-            title: "About Me",
+            title: "Stocks",
             icon: "user-secret",
-            state: "about"
+            state: "stocks",
+            hasSubMenu: true,
+            subMenuItems: [
+                { title: "Opening Item Stock", state: "opening-item-stock" },
+                { title: "Stock Transfer", state: "stock-transfer" },
+                { title: "Stock Acceptance", state: "stock-acceptance" }
+            ]
         },
         {
-            title: "Contact",
-            icon: "phone",
-            state: "contact"
+            title: "Purchage",
+            icon: "user-secret",
+            state: "purchage",
+            hasSubMenu: false
+        },
+
+        {
+            title: "Sales",
+            icon: "user-secret",
+            state: "sales",
+            hasSubMenu: false
+        },
+
+        {
+            title: "Cash",
+            icon: "user-secret",
+            state: "cash",
+            hasSubMenu: true,
+            subMenuItems: [
+                      {
+                          title: "Cash Transfer",
+                          state: "about"
+                      },
+                      {
+                          title: "Cash Aceptance",
+                          state: "about"
+                      }]
+        },
+        {
+            title: "Expenses",
+            icon: "graduation-cap",
+            state: "expense",
+            hasSubMenu: false
+        },
+        {
+            title: "Reports",
+            icon: "graduation-cap",
+            state: "expense",
+            hasSubMenu: true,
+            subMenuItems: [
+                     {
+                         title: "Item Stock",
+                         state: "items-tock"
+                     },
+                     {
+                         title: "Purchase Details",
+                         state: "purchase-details"
+                     },
+                     {
+                         title: "Sales Details",
+                         state: "sales-details"
+                     },
+                     {
+                         title: "Stock Transfer Details",
+                         state: "stock-transfer-details"
+                     }]
         }
+
+
+
     ];
 
     //set the theme selected
-    vm.setTheme = function (value) {
-        $rootScope.theme = value;
-    };
+    //$scope.setTheme = function (value) {
+    //    $rootScope.theme = value;
+    //};
 
 
-    //set the Layout in normal view
-    vm.setLayout = function (value) {
-        $rootScope.layout = value;
-    };
+    ////set the Layout in normal view
+    //$scope.setLayout = function (value) {
+    //    $rootScope.layout = value;
+    //};
 
 
     //controll sidebar open & close in mobile and normal view
-    vm.sideBar = function (value) {
+    $scope.sideBar = function (value) {
         if ($(window).width() <= 767) {
             if ($("body").hasClass('sidebar-open'))
                 $("body").removeClass('sidebar-open');
@@ -219,9 +252,9 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
     };
 
     //navigate to search page
-    vm.search = function () {
-        $state.go('app.search');
-    };
+    //$scope.search = function () {
+    //    $state.go('app.search');
+    //};
 
     console.log('getting in to the app controller');
 
