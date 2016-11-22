@@ -106,50 +106,78 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
         {
             title: "Home",
             icon: "dashboard",
-            state: "home"
+            state: "home",
+            hasSubMenu: false
         },
         {
             title: "Units",
             icon: "dashboard",
-            state: "unit"
+            state: "unit",
+            hasSubMenu: false
         },
         {
             title: "Items",
             icon: "gears",
-            state: "item"
+            state: "item",
+            hasSubMenu: false
 
         },
+
         {
-            title: "Expenses",
-            icon: "graduation-cap",
-            state: "expense"
+            title: "Suppliers",
+            icon: "suitcase",
+            state: "supplier",
+            hasSubMenu: false
         },
         {
             title: "Customers",
             icon: "file-code-o",
-            state: "recent"
+            state: "recent",
+            hasSubMenu: false
         },
         {
-            title: "Suppliers",
-            icon: "suitcase",
-            state: "supplier"
+            title: "Shops",
+            icon: "globe",
+            state: "shops",
+            hasSubMenu: false
+        },
+        {
+            title: "",
+            icon: "",
+            state: "",
+            hasSubMenu: false
         },
         {
             title: "Stocks",
             icon: "user-secret",
             state: "stocks",
             hasSubMenu: true,
-            subMenu: [
-                { title: "Stock Transfer", state: "about" },
-                { title: "Stock Acceptance", state: "about" }
+            subMenuItems: [
+                { title: "Opening Item Stock", state: "opening-item-stock" },
+                { title: "Stock Transfer", state: "stock-transfer" },
+                { title: "Stock Acceptance", state: "stock-acceptance" }
             ]
         },
+        {
+            title: "Purchage",
+            icon: "user-secret",
+            state: "purchage",
+            hasSubMenu: false
+        },
+
+        {
+            title: "Sales",
+            icon: "user-secret",
+            state: "sales",
+            hasSubMenu: false
+        },
+
         {
             title: "Cash",
             icon: "user-secret",
             state: "cash",
             hasSubMenu: true,
-            subMenu: [
+            subMenuItems: [
                       {
                           title: "Cash Transfer",
                           state: "about"
@@ -160,22 +188,37 @@ function ($rootScope, $scope, $state, $location, Flash, appSettings) {
                       }]
         },
         {
-            title: "Shops",
-            icon: "globe",
-            state: "shops"
+            title: "Expenses",
+            icon: "graduation-cap",
+            state: "expense",
+            hasSubMenu: false
         },
-
         {
-            title: "Purchage",
-            icon: "user-secret",
-            state: "purchage"
-        },
-
-        {
-            title: "Sales",
-            icon: "user-secret",
-            state: "sales"
+            title: "Reports",
+            icon: "graduation-cap",
+            state: "expense",
+            hasSubMenu: true,
+            subMenuItems: [
+                     {
+                         title: "Item Stock",
+                         state: "items-tock"
+                     },
+                     {
+                         title: "Purchase Details",
+                         state: "purchase-details"
+                     },
+                     {
+                         title: "Sales Details",
+                         state: "sales-details"
+                     },
+                     {
+                         title: "Stock Transfer Details",
+                         state: "stock-transfer-details"
+                     }]
         }
+
+
+
     ];
 
     //set the theme selected

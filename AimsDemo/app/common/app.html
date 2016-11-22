@@ -7,7 +7,7 @@
 
         <nav class="navbar navbar-static-top" role="navigation">
 
-            <a class="sidebar-toggle" data-toggle="offcanvas" role="button" data-ng-click="vm.sideBar(1);">
+            <a class="sidebar-toggle" data-toggle="offcanvas" role="button" data-ng-click="sideBar(1);">
                 <span class="sr-only"></span>
             </a>
 
@@ -30,22 +30,17 @@
             </div>
 
             <ul class="sidebar-menu">
-                <li class="treeview" ng-click="vm.sideBar();" ng-repeat="menu in menuItems">
+                <li class="treeview" ng-click="sideBar();" ng-repeat="menu in menuItems">
                     <a ui-sref="app.{{menu.state}}">
                         <i class="fa fa-{{menu.icon}}"></i> <span>{{menu.title}}</span>
                     </a>
-                    <ul class="sidebar-menu" ng-if="menu.hasChild" style="padding-left:20px;">
-                        <li class="sub-treeview" ng-click="vm.sideBar();" ng-repeat="menu in menu.menuItems">
-                            <a ng-href="#">
-                                <i class="fa fa-graduation-cap"></i> <span>Test</span>
+                    <ul class="sub-menu" ng-if="menu.hasSubMenu">
+                        <li class="sub-treeview-menu" ng-click="sideBar();" ng-repeat="subMenu in menu.subMenuItems">
+                            <a ui-sref="app.{{subMenu.state}}">
+                                <span>{{subMenu.title}}</span>
                             </a>
-                        </li>                       
+                        </li>
                     </ul>
-                </li>
-                <li class="treeview" ng-click="vm.sideBar();">
-                    <a href="https://github.com/ranjithprabhuk/Angular-Bootstrap-Dashboard" target="_blank">
-                        <i class="fa fa-github"></i> <span>View in Github</span>
-                    </a>
                 </li>
             </ul>
         </section>
